@@ -1,0 +1,53 @@
+---
+import "../styles/Header.css";
+
+const images = [
+  "/images/mountain1.webp",
+  "/images/mountain2.webp",
+  "/images/mountain3.webp"
+];
+---
+<header id="header">
+  <div class="carousel">
+    <div class="carousel-images" id="carousel-images">
+      {images.map((src, index) => (
+        <img src={src} alt={`Imagen ${index + 1}`} />
+      ))}
+    </div>
+    <button class="carousel-control prev" id="prev-button">‹</button>
+    <button class="carousel-control next" id="next-button">›</button>
+  </div>
+</header>
+
+<script is:inline>
+  // * Seleccionar los elementos del DOM necesarios
+  const imagesContainer = document.getElementById("carousel-images");
+  const prevButton = document.getElementById("prev-button");
+  const nextButton = document.getElementById("next-button");
+  const totalImages = imagesContainer.children.length;
+  let currentIndex = 0;
+
+  // * Ajustar el ancho del contenedor de imágenes en función de la cantidad total de imágenes
+  imagesContainer.style.width = `${totalImages * 100}%`;
+
+  // * Función para actualizar la posición del carrusel
+  const updateCarousel = () => {
+    const offset = -currentIndex * (100 / totalImages);
+    imagesContainer.style.transform = `translateX(${offset}%)`;
+  };
+  // * Evento para avanzar a la siguiente imagen al hacer clic en el botón "Siguiente"
+  nextButton.addEventListener("click", () => {
+    currentIndex = (currentIndex + 1) % totalImages; // ! Asegura que el índice vuelva a 0 cuando llegue al final
+    updateCarousel();
+  });
+  // * Evento para retroceder a la imagen anterior al hacer clic en el botón "Anterior"
+  prevButton.addEventListener("click", () => {
+    currentIndex = (currentIndex - 1 + totalImages) % totalImages; // ! Asegura que el índice vuelva al último cuando esté en la primera imagen
+    updateCarousel();
+  });
+  // * Configurar el cambio automático de imágenes cada 5 segundos
+  setInterval(() => {
+    currentIndex = (currentIndex + 1) % totalImages;
+    updateCarousel();
+  }, 5000);
+</script>

@@ -1,0 +1,141 @@
+/* Estilos generales del menú */
+.navMenu {
+  background: #fafafa;
+  padding: 1rem;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  transition: background 0.3s ease-in-out;
+}
+
+.navMenu ul {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navMenu ul img {
+  height: 50px;
+  margin-right: auto;
+  transition: transform 0.3s ease-in-out;
+}
+
+.navMenu ul img:hover {
+  transform: scale(1.1);
+}
+
+.navMenu ul li {
+  margin: 0 15px;
+}
+
+.navMenu ul li a {
+  color: #b0b0b0;
+  text-decoration: none;
+  font-size: 1.2rem;
+  padding: 0.5rem;
+  transition: color 0.3s ease-in-out;
+}
+
+.navMenu ul li a:hover {
+  color: #598fc6;
+}
+
+/* Efecto de cambio de color al hacer scroll */
+.navMenu.scrolled {
+  background: #598fc6;
+}
+
+/* Estilos para el menú responsive */
+.menu-toggle {
+  display: none;
+  cursor: pointer;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: #598fc6;
+  position: absolute;
+  right: 20px;
+  top: -5px;
+  z-index: 1100;
+}
+
+/* Media query para pantallas pequeñas */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  .navMenu ul {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    left: 0;
+    width: 100%;
+    background: #fafafa;
+    text-align: center;
+    padding: 1rem 0;
+  }
+
+  .navMenu ul.active {
+    display: flex;
+  }
+
+  .navMenu ul li {
+    margin: 15px 0;
+  }
+}
+
+/* Modo oscuro */
+
+.dark-mode-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.3rem;
+  padding: 0.5rem;
+  color: #b0b0b0;
+  transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
+  position: relative;
+  width: 40px;
+  height: 40px;
+}
+
+.dark-mode-btn:hover {
+  transform: scale(1.1);
+}
+
+/* Animación de los iconos */
+.dark-mode-btn i {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+/* Icono del sol inicialmente oculto */
+.dark-mode-btn #sunIcon {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.8);
+}
+
+/* Efecto en modo oscuro */
+.dark-mode .dark-mode-btn #moonIcon {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.8);
+}
+
+.dark-mode .dark-mode-btn #sunIcon {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+/* Suave transición de fondo */
+body {
+  transition: background-color 0.5s ease, color 0.5s ease;
+}

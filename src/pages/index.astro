@@ -1,0 +1,29 @@
+---
+import Nieve from "../components/Nieve.astro";
+import Menu from "../components/Menu.astro";
+import Header from "../components/Header.astro";
+import Gallery from "../components/Gallery.astro";
+import AboutUs from "../components/AboutUs.astro";
+import ContactForm from "../components/ContactForm.astro";
+import Footer from "../components/Footer.astro";
+import "../styles/global.css";
+---
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <title>Paraiso Nevado</title>
+     <link rel="icon" type="image/png" href="/public/images/logo.svg">
+  </head>
+  <body>
+    <Nieve />
+    <Menu />
+    <Header />
+    <Gallery />
+    <AboutUs />
+    <ContactForm />
+    <Footer />
+  </body>
+</html>

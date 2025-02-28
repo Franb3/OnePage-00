@@ -1,0 +1,38 @@
+.error-404 {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: url("/images/gradient.webp") no-repeat center center/cover;
+}
+
+.error-404 h1 {
+  font-size: 3rem;
+  color: #fff;
+  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+  margin-bottom: 1rem;
+}
+
+.error-404 p {
+  font-size: 1.2rem;
+  color: #f0f0f0;
+  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+  margin-bottom: 2rem;
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.8rem 1.5rem;
+  background-color: rgba(55, 102, 164, 0.9);
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.2rem;
+  border-radius: 0.5rem;
+  transition: background 0.3s;
+}
+
+.btn:hover {
+  background-color: rgba(89, 143, 198, 0.9);
+}

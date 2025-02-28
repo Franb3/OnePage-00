@@ -1,0 +1,55 @@
+---
+import "../styles/Form.css";
+---
+
+<section id="contact">
+  <h2>Contacto</h2>
+  <form id="contact-form">
+    <label for="name">Nombre:</label>
+    <input type="text" id="name" name="name" required />
+
+    <label for="email">Correo:</label>
+    <input type="email" id="email" name="email" required />
+
+    <label for="message">Mensaje:</label>
+    <textarea id="message" name="message" required></textarea>
+
+    <button type="submit">Enviar</button>
+  </form>
+
+  <script is:inline>
+    // * Agregar un evento al formulario cuando se envíe
+    document.getElementById('contact-form').addEventListener('submit', async (event) => {
+      event.preventDefault(); // ! Prevenir que la página se recargue al enviar el formulario
+
+      const form = event.target;
+      const formData = new FormData(form);
+    // * Obtener los valores del formulario y guardarlos en un objeto
+      const data = {
+        name: formData.get('name'),
+        email: formData.get('email'),
+        message: formData.get('message'),
+      };
+    // * Enviar los datos al backend usando fetch
+      try {
+        const response = await fetch('http://localhost:5000/send-email', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data),
+        });
+
+        if (response.ok) {
+          alert('¡Correo enviado exitosamente!');
+          form.reset(); // * Limpia el formulario
+        } else {
+          alert('Hubo un problema al enviar el correo.'); // ! Mensaje de error si la solicitud falla
+        }
+      } catch (error) {
+        console.error('Error:', error); // ! Mostrar el error en la consola si ocurre un problema
+        alert('No se pudo enviar el correo. Inténtalo más tarde.'); // ! Mostrar alerta en caso de error
+      }
+    });
+  </script>
+</section>

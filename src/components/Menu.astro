@@ -1,0 +1,42 @@
+---
+import "../styles/Menu.css";
+---
+
+<nav class="navMenu">
+  <button class="menu-toggle">☰</button>
+  <ul>
+    <img src="/public/images/logo.svg">
+    <li><a href="#header">Inicio</a></li>
+    <li><a href="#gallery">Galería</a></li>
+    <li><a href="#about">Nosotros</a></li>
+    <li><a href="#contact">Contacto</a></li>
+<button id="darkModeToggle" class="dark-mode-btn">
+  <i id="moonIcon" class="fa-solid fa-moon"></i>
+  <i id="sunIcon" class="fa-solid fa-sun"></i>
+</button>
+  </ul>
+</nav>
+
+<script is:inline>
+  document.addEventListener("DOMContentLoaded", () => {
+    // * Alternar menú de navegación
+    document.querySelector(".menu-toggle")?.addEventListener("click", () => {
+      document.querySelector(".navMenu ul")?.classList.toggle("active");
+    });
+
+    // * Alternar modo oscuro
+    const body = document.body;
+    const toggle = document.getElementById("darkModeToggle");
+
+    // * Comprobar y aplicar el tema guardado en localStorage
+    if (localStorage.getItem("theme") === "dark") {
+      body.classList.add("dark-mode");
+    }
+
+    // * Evento para cambiar el modo oscuro y guardar la preferencia
+    toggle?.addEventListener("click", () => {
+      body.classList.toggle("dark-mode");
+      localStorage.setItem("theme", body.classList.contains("dark-mode") ? "dark" : "light");
+    });
+  });
+</script>
