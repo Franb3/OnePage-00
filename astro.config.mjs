@@ -1,8 +1,11 @@
-import { defineConfig } from 'astro/config';
+import { defineConfig } from "astro/config";
+import node from "@astrojs/node";
 
 export default defineConfig({
-    output: 'server',
-    pages: {
-      '404': '/404'
-    }
+  adapter: node({ mode: "standalone" }),
+
+  output: "server",
+  pages: {
+    404: "/404",
+  },
 });
