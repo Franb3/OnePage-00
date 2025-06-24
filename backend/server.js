@@ -3,10 +3,13 @@ import express from "express";
 import nodemailer from "nodemailer";
 import bodyParser from "body-parser";
 import cors from "cors";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 // * Creación de la aplicación Express
 const app = express();
-const PORT = 5000;
+const PORT = 5001;
 
 // * Middlewares
 app.use(bodyParser.json()); // ! Permite que Express analice solicitudes con cuerpo en formato JSON
@@ -28,7 +31,7 @@ app.post("/send-email", (req, res) => {
   // * Opciones para configurar el correo a enviar
   const mailOptions = {
     from: email,
-    to: "franbdeveloper@gmail.com",
+    to: process.env.EMAIL_USER, // ! Dirección de correo electrónico del destinatario
     subject: `Nuevo mensaje de ${name}`,
     text: message,
   };
